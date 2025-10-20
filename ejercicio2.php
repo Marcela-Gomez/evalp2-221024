@@ -1,4 +1,42 @@
+<?php
+$error = "";
+$resultado = "";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $figura = $_POST["figura"];
+
+    if ($figura === "cilindro") {
+        $radio = $_POST["radio"];
+        $altura = $_POST["altura"];
+
+        if (empty($radio) || empty($altura)) {
+            $error = "⚠️ Todos los campos son obligatorios.";
+        } elseif (!is_numeric($radio) || !is_numeric($altura)) {
+            $error = "⚠️ Solo se permiten valores numéricos.";
+        } elseif ($radio <= 0 || $altura <= 0) {
+            $error = "⚠️ Los valores deben ser positivos.";
+        } else {
+            $area = 2 * M_PI * $radio * $altura + 2 * M_PI * pow($radio, 2);
+            $resultado = "El área del cilindro es: <strong>" . round($area, 2) . "</strong> unidades².";
+        }
+
+    } elseif ($figura === "rectangulo") {
+        $base = $_POST["base"];
+        $altura = $_POST["alturaR"];
+
+        if (empty($base) || empty($altura)) {
+            $error = "⚠️ Todos los campos son obligatorios.";
+        } elseif (!is_numeric($base) || !is_numeric($altura)) {
+            $error = "⚠️ Solo se permiten valores numéricos.";
+        } elseif ($base <= 0 || $altura <= 0) {
+            $error = "⚠️ Los valores deben ser positivos.";
+        } else {
+            $area = $base * $altura;
+            $resultado = "El área del rectángulo es: <strong>" . round($area, 2) . "</strong> unidades².";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
