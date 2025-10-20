@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             background: #f4f6f9;
             display: flex;
-            justify-content: center;
+            justify-content: column;
             align-items: center;
             height: 100vh;
             margin: 0;
@@ -105,6 +105,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .campo {
             margin-bottom: 12px;
         }
+        /* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #007bff;
+    padding: 15px 30px;
+    color: white;
+}
+.navbar .brand {
+    font-size: 20px;
+    font-weight: bold;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.navbar ul li {
+    margin: 0 15px;
+}
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+.logout {
+    background: #dc3545;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white !important;
+    font-weight: bold;
+}
+.logout:hover {
+    background: #b52a37;
+}
+
     </style>
     <script>
         function mostrarCampos() {
@@ -115,6 +156,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 </head>
 <body>
+        <div class="navbar">
+        <div class="brand">Dashboard</div>
+        <ul>
+            <li><a href="inicio.php">Inicio</a></li>
+            <li><a href="calculadora.php">Calculadora Áreas</a></li>
+            <li><a href="triangulo.php">Triángulo</a></li>
+            <li><a href="logout.php" class="logout">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+
     <div class="card">
         <h2>Calculadora de Áreas</h2>
         <form method="POST">
