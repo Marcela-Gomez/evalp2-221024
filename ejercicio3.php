@@ -1,4 +1,35 @@
+<?php
+$error = "";
+$tipo = "";
+$imagen = "";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $a = $_POST["ladoA"];
+    $b = $_POST["ladoB"];
+    $c = $_POST["ladoC"];
+
+    // Validaciones
+    if (empty($a) || empty($b) || empty($c)) {
+        $error = "⚠️ Todos los lados son obligatorios.";
+    } elseif (!is_numeric($a) || !is_numeric($b) || !is_numeric($c)) {
+        $error = "⚠️ Todos los lados deben ser números.";
+    } elseif ($a <= 0 || $b <= 0 || $c <= 0) {
+        $error = "⚠️ Los lados deben ser positivos.";
+    } else {
+        // Clasificación
+        if ($a == $b && $b == $c) {
+            $tipo = "Equilátero";
+            $imagen = "./recursos/equilatero.png";
+        } elseif ($a == $b || $b == $c || $a == $c) {
+            $tipo = "Isósceles";
+            $imagen = "./recursos/isosceles.png";
+        } else {
+            $tipo = "Escaleno";
+            $imagen = "./recursos/escaleno.png";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
