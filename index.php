@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         .imagen {
             flex: 1;
-            background: url("./inico.jpg") no-repeat center center;
+            background: url("./recursos/inico.jpg") no-repeat center center;
             background-size: cover;
         }
         .error {
